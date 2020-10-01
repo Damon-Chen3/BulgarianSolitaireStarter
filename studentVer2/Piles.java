@@ -21,10 +21,22 @@ public class Piles
          avoid a situation like  1 1 3 4 5 6 7 8 10  which means we
          still aren't done.
       */
-      . . .
-
-
-
+      boolean check=false;
+      for(int i=0;i<piles.size();i++)
+      {
+          if(piles.size()==9 && piles.contains(1) && piles.contains(2)
+          && piles.contains(3) && piles.contains(4) && piles.contains(5)
+          && piles.contains(6) && piles.contains(7) && piles.contains(8) 
+          && piles.contains(9))
+          {
+              check=true;
+          }
+          else
+          {
+              return check;
+          }
+      }
+      return check;
    }
 
    private ArrayList<Integer> piles;
@@ -72,6 +84,21 @@ public class Piles
    */
    public void playRound()
    {
-	   // insert your code for ver 1
+      // insert your code for ver 1
+      int newPile=0;
+      for (int i=0; i<piles.size();i++)
+      {
+          newPile+=1;
+          if (piles.get(i)-1<=0)
+          {
+              piles.remove(i);
+              i--;
+          }
+          else
+          {
+              piles.set(i,piles.get(i)-1);
+          }
+      }
+      piles.add(newPile);
    }
 }
